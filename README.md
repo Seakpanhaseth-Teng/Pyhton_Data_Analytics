@@ -38,12 +38,34 @@ src/01_audit.py      T01  audit rules -> PASS/FAIL report
 src/02_stage.py      T02  Excel -> DuckDB staging        <- skeleton, your ticket
 
 sql/                 analytical queries (T03+)
-docs/                engagement brief, data contract, KPI definitions
+docs/                engagement brief, zero-cost stack, data contract, KPI defs
+docs/prompts/        prompts for generating a richer dataset
+docs/obsidian/       project notes staged for the vault
 tickets/             one file per ticket: ask, criteria, hints, review notes
 output/              every artifact you would attach to a ticket
+tools/               helper scripts (note sync)
 
 legacy/              the original linear script, archived for reference
 ```
+
+## Reading order
+
+1. [`docs/00-engagement-brief.md`](docs/00-engagement-brief.md) — the company, the role, the rules
+2. [`docs/02-zero-cost-stack.md`](docs/02-zero-cost-stack.md) — every tool, licence, and free-tier limit
+3. [`tickets/T01-data-audit.md`](tickets/T01-data-audit.md) — what the audit found and why it binds everything after it
+4. [`tickets/T02-staging.md`](tickets/T02-staging.md) — your assignment
+
+## Obsidian
+
+Project notes are drafted in `docs/obsidian/` and copied into the vault:
+
+```powershell
+powershell -File tools/sync_obsidian.ps1
+```
+
+Targets `10-Projects/Cellcard-MIS-Engagement.md` and
+`20-Decisions/Cellcard-MIS-Decisions.md`. The existing
+`Library-Management-System` note is never touched.
 
 ## Setup
 
