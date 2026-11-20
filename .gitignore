@@ -216,3 +216,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Cellcard MIS engagement - generated artifacts
+*.duckdb
+*.duckdb.wal
+data/clean/
+output/
+!.gitkeep

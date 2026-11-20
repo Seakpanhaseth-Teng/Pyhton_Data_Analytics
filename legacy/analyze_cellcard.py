@@ -10,7 +10,11 @@ Requires: pandas, matplotlib (pip install pandas matplotlib openpyxl --break-sys
 import pandas as pd
 import matplotlib.pyplot as plt
 
-FILE = "Cellcard_Interview_Practice_Dataset.xlsx"  # put this script next to the file, or use full path
+# ARCHIVED: superseded by src/01_audit.py onward. Kept as a reference for the
+# original linear approach. The dataset now lives in data/raw/.
+import pathlib
+
+FILE = pathlib.Path(__file__).resolve().parents[1] / "data" / "raw" / "Cellcard_Interview_Practice_Dataset.xlsx"
 
 # -----------------------------------------------------------------
 # 0. LOAD THE DATA
