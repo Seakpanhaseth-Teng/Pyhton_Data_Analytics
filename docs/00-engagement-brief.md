@@ -15,13 +15,13 @@ process, the deliverables, the review loop — is how the work actually runs.
 | **You report to** | Head of Commercial Analytics |
 | **Your stakeholders** | Sales Director (5 regional managers), Marketing lead, CFO's office |
 | **Reporting period** | June 2026 (month-end close) |
-| **Data source** | `data/raw/Cellcard_Interview_Practice_Dataset.xlsx` |
+| **Data source** | 9 objects in `data/raw/` (8 CSV/XLSX extracts + provenance note) |
 | **Deadline** | Performance pack to Sales Director by 5 July |
 | **Cadence** | This is a **recurring monthly pack**, not a one-off study |
 
 ## 2. Why the role matters
 
-Cellcard's sales org runs on targets. Five regions, four products, six reps.
+Cellcard's sales org runs on targets. Five regions, six products, fourteen reps.
 Every month the Sales Director asks the same three questions, in this order:
 
 1. **Are we going to hit the number?** (target vs actual, and by how much)
@@ -42,7 +42,7 @@ analysis is the easy part. The hard parts are:
 ## 3. The delivery pipeline you are building
 
 ```
- Excel source  ->  audit  ->  SQL staging (DuckDB)  ->  KPI layer
+  Raw extract  ->  audit  ->  SQL staging (DuckDB)  ->  KPI layer
                                                           |
                     +-------------------------------------+
                     |                  |                  |
@@ -95,11 +95,18 @@ next hint, not the answer.
 
 These come straight out of the audit (T01) and they are non-negotiable:
 
-- **Never rank reps on raw revenue.** Transaction volume varies 2.8x between
-  reps, so totals reflect territory, not talent. Use attainment % and
-  revenue-per-call.
-- **Never derive Revenue from units x price.** The source has no price list;
-  Revenue is the source of truth as an amount.
-- **Never join sales to customers.** There is no shared key. Asking for that
-  join is a data request to the source owner, not an analysis you can fake.
+- **Never rank reps on raw revenue.** Three reps were hired mid-period, so
+  their totals reflect tenure, not talent. Use attainment % or lines per
+  selling day, and exclude partial-history reps from any "who is best" cut.
+- **Dedupe `txn_id` before summing anything.** 210 rows are exact duplicates.
+  Raw June revenue overstates the month.
+- **LEFT JOIN, never INNER, when attaching customers.** 306 sales lines
+  ($176,058) carry an unknown customer ID. An inner join silently deletes
+  them and the total stops reconciling.
+- **TRIM region, normalise plan case.** 2,288 region values carry whitespace
+  and 240 plan values are case variants. Both split a GROUP BY into phantom
+  categories.
+- **Never reconcile sales revenue to MRR.** `units` on the subscription
+  products is a bulk order quantity, so the two tables answer different
+  questions. Report each on its own terms and say so.
 - **State the period on every page.** "June 2026", not "this month".

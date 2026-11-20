@@ -1,0 +1,6 @@
+region_id,region_name,province,region_manager_name,population_weight
+R1,Phnom Penh,Phnom Penh,Chea Sophal,0.45
+R2,Siem Reap,Siem Reap,Lim Sreyneang,0.15
+R3,Sihanoukville,Preah Sihanouk,Heng Vuthy,0.15
+R4,Kampot,Kampot,Nou Chanda,0.15
+R5,Battambang,Battambang,Sok Pisey,0.10

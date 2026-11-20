@@ -1,0 +1,8 @@
+product_id,product_name,category,billing_type,unit_price_usd,price_effective_from
+P01,SIM Starter,Voice,one_off,1.50,
+P02,Top-up Bundle,Voice,one_off,0.75,2025-01-01
+P03,Data Pack 5GB,Data,one_off,2.50,2025-01-01
+P04,Postpaid Plan M,Voice+Data,monthly,12.00,2025-01-01
+P05,Home Internet 30Mbps,Broadband,monthly,22.00,2025-01-01
+P05,Home Internet 30Mbps,Broadband,monthly,19.90,2026-01-01
+P06,Enterprise Leased Line,Broadband,monthly,180.00,2025-01-01

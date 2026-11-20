@@ -1,0 +1,15 @@
+rep_id,rep_name,region_id,hire_date,seniority,target_multiplier
+REP01,Sokha Chan,R1,2019-03-04,senior,1.35
+REP02,Dara Kim,R1,2020-07-20,senior,1.35
+REP03,Sophea Meas,R1,2021-01-11,mid,1.00
+REP04,Vibol Long,R1,2021-09-06,mid,1.00
+REP05,Chanthou Pen,R1,2022-04-18,junior,0.70
+REP06,Bopha Ngin,R2,2020-11-02,senior,1.35
+REP07,Samnang Chea,R2,2022-08-15,mid,1.00
+REP08,Theary Ouk,R3,2021-06-07,mid,1.00
+REP09,Kosal Ly,R3,2023-05-22,junior,0.70
+REP10,Nita Heng,R4,2020-02-10,senior,1.35
+REP11,Pheakdey Sun,R4,2025-07-01,junior,0.70
+REP12,Sreyleak Mao,R5,2022-10-03,mid,1.00
+REP13,Visal Nou,R5,2025-10-01,mid,1.00
+REP14,Chenda Rin,R2,2026-01-15,junior,0.70
