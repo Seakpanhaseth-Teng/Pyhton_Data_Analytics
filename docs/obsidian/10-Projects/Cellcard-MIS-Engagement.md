@@ -45,8 +45,10 @@ tags: [data-analytics, mis-reporting, duckdb, python, training]
 
 ## Session log
 - 2026-11-20 — Scoped engagement; built T01 audit; restructured repo; T02 skeleton assigned. Wrote richer-dataset prompt and zero-cost stack doc. Obsidian REST API was offline at session start.
+- 2026-11-20 — **Blocker found:** the agent environment can READ `C:\Users\Admin\Documents` but cannot WRITE to it (even a plain `.txt` fails; not an Obsidian problem). Vault notes are therefore staged in `docs/obsidian/` and copied with `powershell -File tools/sync_obsidian.ps1`. Do not retry direct vault writes next session unless access was granted.
 
 ## Next session: start here
 1. Read `docs/00-engagement-brief.md` for context.
 2. If T02 is done: ask for code review of `src/02_stage.py`.
 3. If the dataset was regenerated: re-run `python src/01_audit.py` and update audit findings before anything else.
+4. Confirm the vault is in sync: notes live in `10-Projects/` and `20-Decisions/`, never in the same file as the LMS note.

@@ -14,3 +14,4 @@ tags: [decisions, adr, cellcard]
 - **D5 Hosting** — GitHub Pages for dashboard, GitHub Actions for monthly refresh. No paid BI licence; Power BI Desktop optional, its sharing needs Pro.
 - **D6 Repo layout** — Numbered pipeline scripts in `src/`, tickets as markdown with acceptance criteria, all outputs to `output/`, no hard-coded paths (all via `src/config.py`).
 - **D7 Archive policy** — Original linear script kept in `legacy/`, never deleted; data files live only in `data/raw/`.
+- **D8 Note sync** — Agent can read but not write `C:\Users\Admin\Documents`. Obsidian notes are authored in `docs/obsidian/` and copied to the vault with `tools/sync_obsidian.ps1`. Vault targets: `10-Projects/Cellcard-MIS-Engagement.md`, `20-Decisions/Cellcard-MIS-Decisions.md`. The `Library-Management-System` note is never touched.
