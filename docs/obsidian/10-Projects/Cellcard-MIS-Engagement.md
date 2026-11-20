@@ -93,17 +93,26 @@ Python, pandas, DuckDB (MIT), openpyxl, matplotlib, Git, VS Code, LibreOffice Ca
 
 **The trap:** Power BI Desktop is free to build in, but *sharing* needs Pro at ~$14/user/month. Free dashboard path: **Looker Studio** (free including sharing) or **Evidence.dev → GitHub Pages**, with **GitHub Actions** for monthly refresh (~2,000 min/month private, unlimited public). Details and tier limits in `docs/02-zero-cost-stack.md`.
 
-## 7. Blocker: Obsidian writes are blocked
+## 7. Blocker: writes to the vault are blocked (confirmed, cause localised)
 
-The agent environment can **read** `C:\Users\Admin\Documents` but **cannot write** to it — a plain `.txt` probe failed too, so it is not an Obsidian issue (likely Windows Defender Controlled Folder Access or a policy). The MCP vault tools fail identically.
+`C:\Users\Admin\Documents` rejects **all** file and directory creation, with the
+misleading error `FileNotFoundException`, and so do `Pictures`, `Videos` and `Music`.
+`Desktop` and `Downloads` accept writes normally. Reads always work.
 
-**Workaround:** notes are authored here in `docs/obsidian/` and copied with:
+Tested and ruled out: reparse points (none), ACLs (`codex-sandbox-users` has RX,
+Admin has inherited Full Control), Controlled Folder Access defaults, and the
+`readonly` attribute. The same failure occurs from a normal PowerShell window, so
+it is **not** an agent sandbox limitation — it is machine-level hardening of the
+Windows library folders.
 
-```powershell
-powershell -File tools/sync_obsidian.ps1
-```
+Workaround: drag the file from the repo into Obsidian's file explorer, or move the
+vault out of `Documents`. See §7b.
 
-Target: `10-Projects/Cellcard-MIS-Engagement.md`. Verified working against a scratch vault; idempotent on repeat runs.
+### 7b. Durable fix (recommended once)
+
+Move the vault out of `Documents` — e.g. to `C:\Users\Admin\ObsidianVault` — then
+use Obsidian's *Open folder as vault*. `C:\Users\Admin` accepts writes, so
+`tools/sync_obsidian.ps1` will then work unattended every session.
 
 ## 8. Where we stopped
 
