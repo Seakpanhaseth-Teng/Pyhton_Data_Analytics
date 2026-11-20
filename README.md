@@ -57,15 +57,15 @@ legacy/              the original linear script, archived for reference
 
 ## Obsidian
 
-Project notes are drafted in `docs/obsidian/` and copied into the vault:
+The whole project record lives in one note, drafted in `docs/obsidian/` and copied into the vault:
 
 ```powershell
 powershell -File tools/sync_obsidian.ps1
 ```
 
-Targets `10-Projects/Cellcard-MIS-Engagement.md` and
-`20-Decisions/Cellcard-MIS-Decisions.md`. The existing
-`Library-Management-System` note is never touched.
+Target: `10-Projects/Cellcard-MIS-Engagement.md`. It contains the decisions, the
+audit verdict, the dataset plan, the cost position, and the resume instructions.
+The existing `Library-Management-System` note is never touched.
 
 ## Setup
 
